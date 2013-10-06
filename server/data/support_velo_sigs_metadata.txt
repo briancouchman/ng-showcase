@@ -1,0 +1,33 @@
+Dictionnaire des données
+INV_ID : identifiant
+INV_NO : numéro d’inventaire
+ANC_NUM : ancien numéro
+INV_CATL_NO : numéro de catalogue
+CATL_MODELE : modèle
+MARQ : marque
+DATE_INSPECTION : dernière date d’inspection
+CE_NO : constante = 61
+ELEMENT : élément
+CATEGORIE : catégorie
+COULEUR : couleur
+MATERIAU : matériau
+CONDITION : condition
+INTERVENTION : intervention
+EMPL_X : coordonnée X
+EMPL_Y : coordonnée Y
+EMPL_Z : coordonnée Z
+TERRITOIRE : territoire
+STATUT : statut
+BASE : base
+ANCRAGE : ancrage
+PARC : Nom du parc
+AIRE : aire
+EMPL_ID : identifiant de l’emplacement
+ORDRE_AFFICHAGE : ordre d’affichage
+LONG : longitude
+LAT : latitude
+
+
+
+Dernière mise à jour
+2013-02-20
