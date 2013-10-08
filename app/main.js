@@ -8,7 +8,7 @@ require.config({
 		'domReady' : '../bower_components/requirejs-domready/domReady',
 		'async' : '../bower_components/requirejs-plugins/src/async',
 		'GoogleMap' : '../bower_components/requirejs-google-maps/dist/GoogleMap',
-		'jqplot' : '../bower_components/jqplot/jquery.jqplot',
+		'jqplot' : '../jqplot.module',
 		'bootstrap' : '../bower_components/bootstrap/dist/js/bootstrap'
 	},
 	shim: {
@@ -32,23 +32,8 @@ require.config({
 	]
 });
 
-require(['jquery', 'bootstrap'], function($){
-	$("#output").html("Yeah");
-});
-
-
-require( ['angular','app','controllers','routes'], function(angular, app, routes) {
+require( ['angular','app','controllers','routes','services/data-service'], function(angular, app, routes, dataService) {
 	'use strict';
 	angular.bootstrap(document, ['showcase']);
 });
-
-
- require(['GoogleMap', 'domReady!'], function(GoogleMap) {
-    var mapEl = document.getElementById('map');
-    return new GoogleMap(mapEl);
- });
-
- require(['jquery', 'jqplot'], function($jq){
-	$jq.jqplot('plot',  [[[1, 2],[3,5.12],[5,13.1],[7,33.6],[9,85.9],[11,219.9]]]);
- });
 
