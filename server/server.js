@@ -1,14 +1,17 @@
 var express = require('express');
 var fs = require('fs');
 var csvtojson = require("csvtojson");
+var eyes = require('eyes');
+var xmldoc = require('xmldoc');
 
 
 var app = express();
 
-app.get('*', function(req,res,next){
+app.all('*', function(req,res,next){
 	console.log("Setting common headers");
 	res.setHeader("Access-Control-Allow-Origin", "*");
 	res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+	res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
 	next();
 });
 
@@ -25,6 +28,31 @@ app.get('/velo/signalisation', function(req, res) {
 	});
 
 });
+
+
+app.get('/parking', function(req, res) {
+	console.log("Path /parking");
+	res.type('application/json'); // set content-type
+
+	var stream = fs.readFile('data/stationnement/rosemont.kml', {encoding: 'utf-8'}, function(err, data){
+		var results = new xmldoc.XmlDocument(data);
+		var places = results.childNamed("Document")
+						 .childNamed("Folder")
+						 .childrenNamed("Placemark");
+		console.log("%s places", places.length);
+		var parking= [];
+		for(var i = 0; i < places.length; i++){
+			var coordinate = places[i].childNamed("Point").childNamed("coordinates");
+			parking.push({
+				coords: coordinate.val
+			});
+		}
+		//console.log(" %s", results.toString());
+
+		res.json(parking);
+	});
+});
+
 
 app.listen(3000);
 console.log("listening on port 3000");
