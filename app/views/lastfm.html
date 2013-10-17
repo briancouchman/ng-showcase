@@ -1,6 +1,15 @@
-<h3> Pick an artist </h3>
-<input name="artist" ng-model="artist" class="form-control"/>
-<button class="btn btn-small btn-primary" ng-click="similar()">See similar artists</button>
-<hr/>
-
-<div id="similar_tree"></div>
+<div class="row">
+	<div class="form col-md-6">
+		<div class="form-group">
+			<label for="artist"> Pick an artist </label>
+			<input name="artist" ng-model="artist" class="form-control artists"/>
+		</div>
+		<button class="btn btn-small btn-primary" ng-click="similar()">See similar artists</button>
+		<button class="btn btn-small btn-primary" ng-click="albums()">See albums</button>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div id="similar_tree"></div>
+	</div>
+</div>

@@ -12,7 +12,8 @@ require.config({
 		'mapCluster': '../bower_components/gmaps/markerclusterer',
 		'jqplot' : '../jqplot.module',
 		'bootstrap' : '../bower_components/bootstrap/dist/js/bootstrap',
-		'd3' : '../bower_components/d3/d3.min'
+		'd3' : '../bower_components/d3/d3.min',
+		'typeahead' : '../bower_components/typeahead.js/dist/typeahead',
 	},
 	shim: {
 		'angular' : {'exports' : 'angular'},
@@ -33,15 +34,34 @@ require.config({
 			deps: ['mapCluster'],
 			'exports':'gmaps'
 		},
-		'd3': { 'exports': 'd3'}
+		'd3': { 'exports': 'd3'},
+		'typeahead': {
+			deps: ['jquery'],
+			'exports':'typeahead'
+		}
 	},
 	priority: [
 		"angular"
 	]
 });
 
-require( ['angular','app','controllers','routes','services/data-service', 'services/lastfmService'], function(angular, app, routes, dataService) {
+require( [
+	'angular',
+	'app',
+
+	'controllers/test',
+	'controllers/bike',
+	'controllers/lastfm',
+
+	'services/data-service', 
+	'services/lastfmService',
+	'services/graphService',
+
+	'routes'
+], function(angular, app, routes, dataService) {
 	'use strict';
 	angular.bootstrap(document, ['showcase']);
 });
+
+require( ['bootstrap', 'typeahead'], function(){});
 

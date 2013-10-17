@@ -48,13 +48,16 @@ define(['angular', 'app'], function(angular, app) {
 		/**
 		 * 
 		 */
-		this.getSimilarsById = function(options){
+		this.getSimilarArtists = function(options){
 			//console.log("Getting " + server + "/velo/signalisation");
 
 			var url = server + "?" + "method=artist.getSimilar" + "&api_key=" + key + format;
 			
 			if(typeof options.mbid !== "undefined"){
 				url += "&mbid=" + options.mbid;
+			}else
+			if(typeof options.name !== "undefined"){
+				url += "&artist=" + options.name;
 			}
 			
 			if(typeof options.limit !== "undefined"){
